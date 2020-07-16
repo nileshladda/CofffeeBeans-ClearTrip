@@ -1,0 +1,89 @@
+1) Write a program to find out 6 digit numbers between (100000, 300000) which when
+multiplied by 2 gives all the same digits as in actual numbers- Ex. Let’s say the number is
+123456 and now it is multiplied by 2 and it generates 341265 (contains all digits which are in
+actual number)
+
+
+public class Main
+{
+	public static void main(String[] args){
+		int count = 100000;
+		int multiplier;
+		int number_of_matches = 0;
+		int[] original_array = new int[6];
+		int[] multiplier_array = new int[6];
+		int temporary_int;
+		while(count <= 300000){
+		   int k = count;
+		   multiplier = count*2;
+		   for (int i = 0; i < 6; i++) {
+                original_array[i] = k% 10;
+                multiplier_array[i] = multiplier% 10;
+                k = k / 10;
+                multiplier = multiplier /10;}
+            for (int i = 0; i < 6; i++) {
+                for (int j = i + 1; j < 6; j++){
+                    if (original_array[i] > original_array[j]){
+                        temporary_int = original_array[i];
+                        original_array[i] = original_array[j];
+                        original_array[j] = temporary_int;}
+                }
+            }
+            for (int i = 0; i < 6; i++) {
+                for (int j = i + 1; j < 6; j++) {
+                    if (multiplier_array[i] > multiplier_array[j])
+                    {
+                        temporary_int = multiplier_array[i];
+                        multiplier_array[i] = multiplier_array[j];
+                        multiplier_array[j] = temporary_int;
+                    }
+                }
+            }
+            for(int i=0;i< 6;i++){
+                if(original_array[i] == multiplier_array[i]){
+                    number_of_matches += 1;
+                }
+            }
+		   if(number_of_matches == 6){
+		       System.out.println(count);
+		   }
+		   number_of_matches = 0;
+		   count += 1;
+		}
+	}
+}
+
+
+
+********************************/////////////////////******************************************
+
+2) Given is a string having n words In it: ex: “Bangalore Is in India” :
+A- Write a program to print the words which have repeated characters. Ex o/p: Bangalore,
+India -
+B- Print the name and count of repeating characters in the words found in above steps:
+Ex O/p : Bangalore – a (2)
+India – I(2)
+
+public class repChar{
+public static void main(String args[]){
+    char Char;
+    int count;
+    String input = "Bangalore is in India";
+    String[] splitInput = input.split(" ");
+    for(int j =0;j<splitInput.length;j++) {
+    	String a = splitInput[j];
+    	a = a.toLowerCase();
+    for (Char = 'a'; Char <= 'z'; Char++) {
+        count = 0;
+        for (int i = 0; i < a.length(); i++) {
+            if (a.charAt(i) == Char) {
+                count++;
+            }
+        }
+        if(count>1) {
+        System.out.println(splitInput[j]+"-" + Char + "(" + count+")");
+        }
+    }
+    }
+}
+}
