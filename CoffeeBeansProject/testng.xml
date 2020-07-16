@@ -5,5 +5,5 @@
     <classes>
       <class name="clearT.automation.com.ClearTripService"/>
     </classes>
-  </test> <!-- Test -->
-</suite> <!-- Suite -->
+  </test> 
+</suite> 
